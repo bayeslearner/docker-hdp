@@ -1,4 +1,4 @@
-FROM centos:6
+FROM centos:7
 ARG AMBARI_REPO_URL
 ARG HDP_REPO_URL
 RUN yum install -y sudo wget openssl-devel postgresql-jdbc mysql-connector-java unzip
@@ -27,6 +27,7 @@ RUN yum install -y smartsense*
 RUN yum install -y druid*
 RUN yum install -y superset*
 RUN yum install -y lzo snappy-devel rpcbind
+RUN yum install -y openssh openssh-server openssh-clients
 RUN rm /etc/yum.repos.d/hdp*.repo
 ADD scripts/start.sh /start.sh
 CMD /start.sh
