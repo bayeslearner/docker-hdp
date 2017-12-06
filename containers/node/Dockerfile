@@ -1,4 +1,5 @@
-FROM centos:7
+FROM centos:6
+
 ARG AMBARI_REPO_URL
 ARG HDP_REPO_URL
 RUN yum install -y sudo wget openssl-devel postgresql-jdbc mysql-connector-java unzip
