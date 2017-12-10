@@ -115,4 +115,4 @@ services:
 
 networks:
   dev:
-    driver: bridge
+    driver: overlay
