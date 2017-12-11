@@ -30,5 +30,11 @@ RUN yum install -y superset*
 RUN yum install -y lzo snappy-devel rpcbind
 RUN yum install -y openssh openssh-server openssh-clients
 RUN rm /etc/yum.repos.d/hdp*.repo
+
+# add ssh key
+RUN mkdir /root/.ssh
+ADD ssh/authorized_keys /root/.ssh/authorized_keys
+
+RUN rm -f /start.sh
 ADD scripts/start.sh /start.sh
 CMD /start.sh

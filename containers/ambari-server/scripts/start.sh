@@ -1,8 +1,11 @@
 #!/bin/bash
 
-
 sleep 20
 ambari-server start
+
+chmod 700 /root/.ssh
+chmod 640 /root/.ssh/id_rsa.pub
+service sshd start
 
 while true; do
   sleep 3
