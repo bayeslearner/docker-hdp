@@ -4,6 +4,7 @@ sleep 20
 ambari-server start
 
 chmod 700 /root/.ssh
+chmod 600 /root/.ssh/id_rsa
 chmod 640 /root/.ssh/id_rsa.pub
 service sshd start
 
