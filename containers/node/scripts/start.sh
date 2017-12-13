@@ -3,8 +3,16 @@ sed -i "s/hostname=localhost/hostname=ambari-server/" /etc/ambari-agent/conf/amb
 ambari-agent restart
 
 chmod 700 /root/.ssh
-chmod 640 /root/.ssh/authorized_keys
+chmod 600 /root/.ssh/id_rsa
+chmod 640 /root/.ssh/id_rsa.pub
 service sshd restart
+
+# relieve pam access restricts
+rm -rf /etc/pam.d/*
+echo 'auth sufficient pam_permit.so' >> /etc/pam.d/other
+echo 'account sufficient pam_permit.so' >> /etc/pam.d/other
+echo 'password sufficient pam_permit.so' >> /etc/pam.d/other
+echo 'session sufficient pam_permit.so' >> /etc/pam.d/other
 
 while true; do
   sleep 3
