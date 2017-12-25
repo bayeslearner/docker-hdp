@@ -3,7 +3,7 @@ services:
   vnc:
     build:
      context: ./vnc
-    image: datalab1:5000/hdp/ubuntu-vnc
+    image: datalab1:5055/hdp/ubuntu-vnc
     privileged: true
     networks:
      - dev
@@ -11,12 +11,28 @@ services:
     domainname: dev
     ports:
      - "6080:80"
+#   vpn:
+#     image: kylemanna/openvpn
+#     privileged: true
+#     networks:
+#      - dev
+#     hostname: vpn
+#     domainname: dev
+#     cap_add:
+#      - NET_ADMIN
+#     volumes:
+#      - "/data0/vpn/hdpt:/etc/openvpn"
+#     ports:
+#      - "1194:1194/udp"
+#     deploy:
+#      placement:
+#       constraints: [node.role == manager]
   postgres:
     build:
      context: ../containers/postgres
      args:
       - AMBARI_DDL_URL=${AMBARI_DDL_URL}
-    image: datalab1:5000/hdp/postgres:2.5.1
+    image: datalab1:5055/hdp/postgres:2.5.1
     privileged: true
     networks:
      - dev
@@ -27,7 +43,7 @@ services:
       context: ../containers/ambari-server
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
-    image: datalab1:5000/hdp/ambari-server:2.5.3
+    image: datalab1:5055/hdp/ambari-server:2.5.3
     privileged: true
     networks:
      - dev
@@ -41,7 +57,7 @@ services:
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: datalab1:5000/hdp/node:2.5.4
+    image: datalab1:5055/hdp/node:2.5.4
     privileged: true
     networks:
      - dev
@@ -53,7 +69,7 @@ services:
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: datalab1:5000/hdp/node:2.5.4
+    image: datalab1:5055/hdp/node:2.5.4
     privileged: true
     networks:
      - dev
@@ -65,7 +81,7 @@ services:
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: datalab1:5000/hdp/node:2.5.4
+    image: datalab1:5055/hdp/node:2.5.4
     privileged: true
     networks:
      - dev
@@ -77,7 +93,7 @@ services:
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: datalab1:5000/hdp/node:2.5.4
+    image: datalab1:5055/hdp/node:2.5.4
     privileged: true
     networks:
      - dev
@@ -89,7 +105,7 @@ services:
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: datalab1:5000/hdp/node:2.5.4
+    image: datalab1:5055/hdp/node:2.5.4
     privileged: true
     networks:
      - dev
@@ -101,7 +117,7 @@ services:
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: datalab1:5000/hdp/node:2.5.4
+    image: datalab1:5055/hdp/node:2.5.4
     privileged: true
     networks:
      - dev
@@ -113,7 +129,7 @@ services:
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: datalab1:5000/hdp/node:2.5.4
+    image: datalab1:5055/hdp/node:2.5.4
     privileged: true
     networks:
      - dev
@@ -125,7 +141,7 @@ services:
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: datalab1:5000/hdp/node:2.5.4
+    image: datalab1:5055/hdp/node:2.5.4
     privileged: true
     networks:
      - dev
@@ -137,13 +153,18 @@ services:
       args:
       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: datalab1:5000/hdp/node:2.5.4
+    image: datalab1:5055/hdp/node:2.5.4
     privileged: true
     networks:
      - dev
     hostname: dn5
     domainname: dev
 
+# networks:
+#   dev:
+#     driver: overlay
+#     attachable: true
 networks:
   dev:
-    driver: overlay
+    external:
+      name: docker-net-vpn
