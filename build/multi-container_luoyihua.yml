@@ -10,7 +10,7 @@ services:
     hostname: vnc
     # domainname: dev
     ports:
-     - "6080:80"
+     - "6086:80"
   vpn:
     image: kylemanna/openvpn
     networks:
@@ -22,7 +22,7 @@ services:
     volumes:
      - /data0/vpn/hdpt:/etc/openvpn
     ports:
-     - "1194:1194"
+     - "1193:1194"
   postgres:
     build:
      context: ../containers/postgres
@@ -161,7 +161,7 @@ networks:
     driver: bridge
     ipam:
       config:
-      - subnet: "172.20.20.0/24"
+      - subnet: "172.20.26.0/24"
 # networks:
 #   dev:
 #     external:

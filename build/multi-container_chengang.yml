@@ -161,7 +161,7 @@ networks:
     driver: bridge
     ipam:
       config:
-       - subnet: "172.20.23.0/24"
+      - subnet: "172.20.23.0/24"
 # networks:
 #   dev:
 #     external:
