@@ -20,7 +20,7 @@ services:
     cap_add:
      - NET_ADMIN
     volumes:
-     - /data0/vpn/hdpt:/etc/openvpn
+     - /data0/vpn/hdp-cjh:/etc/openvpn
     ports:
      - "1195:1194"
   postgres:
