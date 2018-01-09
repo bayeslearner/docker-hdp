@@ -8,25 +8,21 @@ services:
     networks:
      - dev
     hostname: vnc
-    domainname: dev
+    # domainname: dev
     ports:
      - "6080:80"
-#   vpn:
-#     image: kylemanna/openvpn
-#     privileged: true
-#     networks:
-#      - dev
-#     hostname: vpn
-#     domainname: dev
-#     cap_add:
-#      - NET_ADMIN
-#     volumes:
-#      - "/data0/vpn/hdpt:/etc/openvpn"
-#     ports:
-#      - "1194:1194/udp"
-#     deploy:
-#      placement:
-#       constraints: [node.role == manager]
+  vpn:
+    image: kylemanna/openvpn
+    networks:
+     - dev
+    hostname: vpn
+    # domainname: dev
+    cap_add:
+     - NET_ADMIN
+    volumes:
+     - /data0/vpn/hdpt:/etc/openvpn
+    ports:
+     - "1194:1194"
   postgres:
     build:
      context: ../containers/postgres
@@ -37,7 +33,7 @@ services:
     networks:
      - dev
     hostname: postgres
-    domainname: dev
+    # domainname: dev
   ambari-server:
     build: 
       context: ../containers/ambari-server
@@ -48,7 +44,7 @@ services:
     networks:
      - dev
     hostname: ambari-server
-    domainname: dev
+    # domainname: dev
     # ports:
     #  - "8080:8080"
   master0:
@@ -62,7 +58,7 @@ services:
     networks:
      - dev
     hostname: master0
-    domainname: dev
+    # domainname: dev
   master1:
     build:
       context: ../containers/node
@@ -74,7 +70,7 @@ services:
     networks:
      - dev
     hostname: master1
-    domainname: dev
+    # domainname: dev
   master2:
     build:
       context: ../containers/node
@@ -86,7 +82,7 @@ services:
     networks:
      - dev
     hostname: master2
-    domainname: dev
+    # domainname: dev
   dn0:
     build:
       context: ../containers/node
@@ -98,7 +94,7 @@ services:
     networks:
      - dev
     hostname: dn0
-    domainname: dev
+    # domainname: dev
   dn1:
     build:
       context: ../containers/node
@@ -110,7 +106,7 @@ services:
     networks:
      - dev
     hostname: dn1
-    domainname: dev
+    # domainname: dev
   dn2:
     build:
       context: ../containers/node
@@ -122,7 +118,7 @@ services:
     networks:
      - dev
     hostname: dn2
-    domainname: dev
+    # domainname: dev
   dn3:
     build:
       context: ../containers/node
@@ -134,7 +130,7 @@ services:
     networks:
      - dev
     hostname: dn3
-    domainname: dev
+    # domainname: dev
   dn4:
     build:
       context: ../containers/node
@@ -146,7 +142,7 @@ services:
     networks:
      - dev
     hostname: dn4
-    domainname: dev
+    # domainname: dev
   dn5:
     build:
       context: ../containers/node
@@ -158,13 +154,15 @@ services:
     networks:
      - dev
     hostname: dn5
-    domainname: dev
+    # domainname: dev
 
-# networks:
-#   dev:
-#     driver: overlay
-#     attachable: true
 networks:
   dev:
-    external:
-      name: docker-net-vpn
+    driver: bridge
+    ipam:
+      config:
+      - subnet: "172.20.20.0/24"
+# networks:
+#   dev:
+#     external:
+#       name: docker-net-vpn
