@@ -10,7 +10,7 @@ services:
     hostname: vnc
     # domainname: dev
     ports:
-     - "6082:80"
+     - "6080:80"
   vpn:
     image: kylemanna/openvpn
     networks:
@@ -22,7 +22,7 @@ services:
     volumes:
      - /data0/vpn/hdpt:/etc/openvpn
     ports:
-     - "1196:1194"
+     - "1194:1194"
   postgres:
     build:
      context: ../containers/postgres
@@ -158,11 +158,11 @@ services:
 
 networks:
   dev:
-    driver: overlay
+    driver: bridge
     ipam:
       config:
-      - subnet: "172.20.22.0/24"
+      - subnet: "172.20.20.0/24"
 # networks:
 #   dev:
 #     external:
-#       name: docker-net-xyc
+#       name: docker-net-vpn
