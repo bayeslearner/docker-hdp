@@ -8,7 +8,7 @@ services:
     networks:
      - dev
     hostname: vnc
-    domainname: dev
+    # domainname: dev
     ports:
      - "6084:80"
   vpn:
@@ -33,7 +33,7 @@ services:
     networks:
      - dev
     hostname: postgres
-    domainname: dev
+    # domainname: dev
   ambari-server:
     build: 
       context: ../containers/ambari-server
@@ -44,7 +44,7 @@ services:
     networks:
      - dev
     hostname: ambari-server
-    domainname: dev
+    # domainname: dev
     # ports:
     #  - "8080:8080"
   master0:
@@ -58,7 +58,7 @@ services:
     networks:
      - dev
     hostname: master0
-    domainname: dev
+    # domainname: dev
   master1:
     build:
       context: ../containers/node
@@ -70,7 +70,7 @@ services:
     networks:
      - dev
     hostname: master1
-    domainname: dev
+    # domainname: dev
   master2:
     build:
       context: ../containers/node
@@ -82,7 +82,7 @@ services:
     networks:
      - dev
     hostname: master2
-    domainname: dev
+    # domainname: dev
   dn0:
     build:
       context: ../containers/node
@@ -94,7 +94,7 @@ services:
     networks:
      - dev
     hostname: dn0
-    domainname: dev
+    # domainname: dev
   dn1:
     build:
       context: ../containers/node
@@ -106,7 +106,7 @@ services:
     networks:
      - dev
     hostname: dn1
-    domainname: dev
+    # domainname: dev
   dn2:
     build:
       context: ../containers/node
@@ -118,7 +118,7 @@ services:
     networks:
      - dev
     hostname: dn2
-    domainname: dev
+    # domainname: dev
   dn3:
     build:
       context: ../containers/node
@@ -130,7 +130,7 @@ services:
     networks:
      - dev
     hostname: dn3
-    domainname: dev
+    # domainname: dev
   dn4:
     build:
       context: ../containers/node
@@ -142,7 +142,7 @@ services:
     networks:
      - dev
     hostname: dn4
-    domainname: dev
+    # domainname: dev
   dn5:
     build:
       context: ../containers/node
@@ -154,7 +154,7 @@ services:
     networks:
      - dev
     hostname: dn5
-    domainname: dev
+    # domainname: dev
 
 networks:
   dev:
