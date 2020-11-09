@@ -1,4 +1,4 @@
-FROM centos:6
+FROM centos:7
 
 ARG AMBARI_REPO_URL
 ARG HDP_REPO_URL
@@ -7,29 +7,33 @@ RUN wget -nv ${AMBARI_REPO_URL} -O /etc/yum.repos.d/ambari.repo
 RUN wget -nv ${HDP_REPO_URL} -O /etc/yum.repos.d/hdp.repo
 # Uncomment if you want to run kerberos in container
 # RUN yum install -y krb5-server krb5-libs krb5-workstation
-RUN yum install -y ambari-agent
-RUN yum install -y ambari-metrics-*
-RUN yum install -y ambari-logsearch-*
-RUN yum install -y hadoop*
-RUN yum install -y zookeeper*
-RUN yum install -y hive*
-RUN yum install -y phoenix_*
-RUN yum install -y ranger*
-RUN yum install -y storm_*
-RUN yum install -y kafka_*
-RUN yum install -y pig_*
-RUN yum install -y datafu_*
-RUN yum install -y spark* livy*
-RUN yum install -y zeppelin*
-RUN yum install -y falcon_*
-RUN yum install -y oozie_*
-#RUN yum install -y lucidworks-hdpsearch
-RUN yum install -y smartsense*
-RUN yum install -y druid*
-RUN yum install -y superset*
-RUN yum install -y lzo snappy-devel rpcbind
-RUN yum install -y openssh openssh-server openssh-clients
-RUN rm /etc/yum.repos.d/hdp*.repo
+RUN true \
+&& yum install -y ambari-agent \
+&& yum install -y ambari-metrics-* \
+&& yum install -y ambari-logsearch-* \
+&& yum install -y hadoop* \
+&& yum install -y zookeeper* \
+&& yum install -y hive* \
+&& yum install -y phoenix_* \
+&& yum install -y ranger* \
+&& yum install -y storm_* \
+&& yum install -y kafka_* \
+&& yum install -y pig_* \
+&& yum install -y datafu_* \
+&& yum install -y spark* livy* \
+&& yum install -y zeppelin* \
+&& yum install -y falcon_* \
+&& yum install -y oozie_* \
+# && yum install -y lucidworks-hdpsearch
+&& yum install -y smartsense* \
+&& yum install -y druid* \
+&& yum install -y superset* \
+&& yum install -y lzo snappy-devel rpcbind \
+&& yum install -y openssh openssh-server openssh-clients \
+&& yum-complete-transaction \
+&& yum -y clean all \
+&& rm /etc/yum.repos.d/hdp*.repo \
+&& true
 
 # add ssh key
 RUN rm -rf /root/.ssh

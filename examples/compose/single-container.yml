@@ -1,30 +1,35 @@
-version: '3'
+version: '3.4'
 services:
-  postgres.dev:
+  postgres:
     build:
      context: ../../containers/postgres
      args:
       - AMBARI_DDL_URL=${AMBARI_DDL_URL}
     image: hdp/postgres
     networks:
-     - dev
+     dev:
+        aliases:
+          - postgres.dev
     environment:
      - AMBARI_DDL_URL=${AMBARI_DDL_URL}
+     - POSTGRES_HOST_AUTH_METHOD=trust
     hostname: postgres
     domainname: dev
-  ambari-server.dev:
+  ambari-server:
     build: 
       context: ../../containers/ambari-server
       args:
        - AMBARI_REPO_URL=${AMBARI_REPO_URL}
     image: hdp/ambari-server
     networks:
-     - dev
+     dev:
+        aliases:
+          - ambari-server.dev
     hostname: ambari-server
     domainname: dev
     ports:
      - "8080:8080"
-  dn0.dev:
+  dn0:
     build:
       context: ../../containers/node
       args:
@@ -33,7 +38,9 @@ services:
     image: hdp/node
     privileged: true
     networks:
-     - dev
+     dev:
+        aliases:
+          - dn0.dev
     hostname: dn0
     domainname: dev
     ports:

@@ -1,4 +1,4 @@
-FROM centos:6
+FROM centos:7
 
 ARG AMBARI_REPO_URL
 RUN yum install -y wget sudo net-tools
