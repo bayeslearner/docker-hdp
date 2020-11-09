@@ -1,5 +1,19 @@
 # docker-hdp
 
+## What's New?
+The original github repository seems to be abandoned, and probably because  the hortonworks no longer exists; the fad of big data has died down; k8s is on its way to replace docker etc etc.  Nonetheless, it is still important to 
+learn these things, so I picked it up and I will try to publish a working version of docker images into docker hub. 
+
+Soe of the major changes will be: 
+1. update base images to centos-7
+2. update Ambari/HDP to the last 2.X version that still includes HIVE view.
+3. fix fqdn, fix postgres auth issues and some java-8 TLS quirks. 
+4. upload to docker hub. 
+
+Let me know if you have any other suggestions. 
+
+## Orignal README starts here!
+
 Built and tested with the latest version of [Docker for Mac](https://docs.docker.com/engine/installation/mac/#/docker-for-mac) and CentOS. Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
 
 Trying this on Windows? Please [let me know](https://twitter.com/randerzander) how it works out.
