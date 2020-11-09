@@ -1,7 +1,7 @@
 # docker-hdp
 
 ## What's New?
-The original github repository seems to be abandoned, and probably because  the hortonworks no longer exists; the fad of big data has died down; k8s is on its way to replace docker etc etc.  Nonetheless, it is still important to 
+The original github repository seems to be abandoned, and probably because the hortonworks no longer exists; the fad of big data has died down; k8s is on its way to replace docker etc etc.  Nonetheless, it is still important to 
 learn these things, so I picked it up and I will try to publish a working version of docker images into docker hub. 
 
 Soe of the major changes will be: 
