@@ -1,14 +1,16 @@
 # docker-hdp
 
 ## What's New?
-The original github repository seems to be abandoned, and probably because of the hortonworks no longer exists; the fad of big data has died down; k8s is on its way to replace docker etc etc.  Nonetheless, it is still important to 
-learn these things, so I picked it up and I will try to publish a working version of docker images into docker hub. 
+The original github repository seems to be abandoned, and probably because a lot of things have happened: Horntonworks no longer exists; the fad of big data has gradually died down; k8s is on its way to replace docker etc etc.  Nonetheless, it is still important to learn these things, so I picked it up and I will try to publish a working version of docker images into docker hub. 
 
-Soe of the major changes will be: 
-1. update base images to centos-7
-2. update Ambari/HDP to the last 2.X version that still includes HIVE view.
-3. fix fqdn, fix postgres auth issues and some java-8 TLS quirks. 
-4. upload to docker hub. 
+Some of the changes to revive this project will be: 
+1. update base images to centos-7 at least,
+2. update Ambari/HDP to the last 2.X version that still included HIVE view,
+3. allow both hostname and fqdn, 
+4. fix postgres auth issues,
+5. fix some java-8 TLS quirks, 
+6. maybe remove those extra ssh stuff?
+7. upload working images to docker hub. 
 
 Let me know if you have any other suggestions. 
 
